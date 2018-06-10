@@ -2,7 +2,7 @@ import { addLocaleData } from 'react-intl';
 import LANGUAGES from './languages';
 
 export function findLanguage(locale) {
-  return LANGUAGES.find(language => language.variants.indexOf(locale) !== -1) || LANGUAGES[0];
+  return LANGUAGES[0];
 }
 
 export function getRequestLocale(locales) {
@@ -40,7 +40,7 @@ export async function loadLanguage(locale) {
   addLocaleData(localeData.default);
 
   return {
-    id: 'en-US',
+    id: language.id,
     translations,
   };
 }

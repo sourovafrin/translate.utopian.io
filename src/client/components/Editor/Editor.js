@@ -122,7 +122,7 @@ class Editor extends React.Component {
 
     this.props.form.setFieldsValue({
       title: post.title,
-      topics: ['utopian-io', 'translations'].concat(post.topics),
+      topics: ['utopian-io', 'translations'].concat(post.topics.filter(cat => cat !== 'utopian-io' && cat !== 'translations')),
       body: post.body,
       reward,
       upvote: post.upvote,
