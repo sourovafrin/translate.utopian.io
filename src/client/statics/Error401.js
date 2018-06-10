@@ -12,39 +12,20 @@ const Error401 = ({ staticContext }) => {
   return (
     <div className="ErrorPage container">
       <h1>
-        <FormattedMessage id="page_forbidden" defaultMessage="Page Requires Authentication" />
+        Translate Open Source Projects on CrowdIn!
       </h1>
       <h2>
-        <FormattedMessage
-          id="page_forbidden_message"
-          defaultMessage="Oops! Looks like you need to login to use this page."
-        />
+        And..get rewarded!
       </h2>
+      <h3>Get Rewarded for Awesome Translations</h3>
       <p>
-        <FormattedMessage
-          id="need_login_link_text"
-          defaultMessage="You need to login to use this feature, please {link}."
-          values={{
-            link: (
-              <a href={SteemConnect.getLoginURL()}>
-                <FormattedMessage id="login" defaultMessage="Login" />
-              </a>
-            ),
-          }}
-        />
+        In collaboration with the DaVinci curation initiative on Steem, you can now be rewarded for translating awesome Open Source projects!
+        Get in touch on <a target="_blank" href="https://discord.gg/vMGmDSm">Discord</a>.
       </p>
+      <br/>
       <p>
-        <FormattedMessage
-          id="homepage_link_text"
-          defaultMessage="Here's a link to {link}."
-          values={{
-            link: (
-              <Link to="/">
-                <FormattedMessage id="homepage" defaultMessage="the home page" />
-              </Link>
-            ),
-          }}
-        />
+        <button style={{background: 'blue'}} className="SidebarBlock__button" onClick={() => window.location.href = SteemConnect.getLoginURL()}>Login</button>
+        By clicking on "Login" you agree to have read and accepted our <a href="https://join.utopian.io/privacy" target="_blank">Privacy Policy</a> and <a href="https://join.utopian.io/tos" target="_blank">Terms of Service</a>.
       </p>
     </div>
   );

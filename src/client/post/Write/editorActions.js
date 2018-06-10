@@ -111,6 +111,16 @@ const broadcastComment = (
   ];
   operations.push(commentOp);
 
+  let ben = [{
+    'account': 'utopian.pay',
+    'weight': 500
+  },
+    {
+      'account': 'davinci.pay',
+      'weight': 4500
+    }
+  ];
+
   const commentOptionsConfig = {
     author,
     permlink,
@@ -126,20 +136,16 @@ const broadcastComment = (
     commentOptionsConfig.percent_steem_dollars = 0;
   }
 
-  if (referral && referral !== authUsername) {
-    commentOptionsConfig.extensions = [
-      [
-        0,
-        {
-          beneficiaries: [{ account: referral, weight: 1000 }],
-        },
-      ],
-    ];
-  }
+  commentOptionsConfig.extensions = [
+    [
+      0,
+      {
+        beneficiaries: ben,
+      },
+    ],
+  ];
 
-  if (reward === rewardsValues.none || reward === rewardsValues.all || referral) {
-    operations.push(['comment_options', commentOptionsConfig]);
-  }
+  operations.push(['comment_options', commentOptionsConfig]);
 
   if (upvote) {
     operations.push([
@@ -214,15 +220,9 @@ export function createPost(postData) {
               dispatch(deleteDraft(draftId));
               dispatch(addEditedPost(permlink));
             }
-            dispatch(push(`/@${author}/${permlink}`));
+            alert("Nice! Your contribution was created successfully!")
+            dispatch(push(`/editor`));
 
-            if (window.analytics) {
-              window.analytics.track('Post', {
-                category: 'post',
-                label: 'submit',
-                value: 10,
-              });
-            }
             return result;
           }),
         ),

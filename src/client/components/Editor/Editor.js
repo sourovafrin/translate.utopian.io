@@ -122,7 +122,7 @@ class Editor extends React.Component {
 
     this.props.form.setFieldsValue({
       title: post.title,
-      topics: post.topics,
+      topics: ['utopian-io', 'translations'].concat(post.topics),
       body: post.body,
       reward,
       upvote: post.upvote,
@@ -333,6 +333,7 @@ class Editor extends React.Component {
         )}
         <Form.Item
           className={classNames({ Editor__hidden: isUpdating })}
+          style={{display: 'none'}}
           label={
             <span className="Editor__label">
               <FormattedMessage id="reward" defaultMessage="Reward" />
@@ -406,7 +407,11 @@ class Editor extends React.Component {
             </Form.Item>
           </div>
         </div>
+        <p>
+          By clicking on "Post" you agree to have read and accepted our <a href="https://join.utopian.io/privacy" target="_blank">Privacy Policy</a> and <a href="https://join.utopian.io/tos" target="_blank">Terms of Service</a>.
+        </p>
       </Form>
+
     );
   }
 }

@@ -139,9 +139,6 @@ class Topnav extends React.Component {
               <FormattedMessage id="login" defaultMessage="Log in" />
             </a>
           </Menu.Item>
-          <Menu.Item key="language">
-            <LanguageSettings />
-          </Menu.Item>
         </Menu>
       </div>
     );
@@ -181,45 +178,8 @@ class Topnav extends React.Component {
               </Link>
             </BTooltip>
           </Menu.Item>
-          <Menu.Item key="notifications" className="Topnav__item--badge">
-            <BTooltip
-              placement="bottom"
-              title={intl.formatMessage({ id: 'notifications', defaultMessage: 'Notifications' })}
-              overlayClassName="Topnav__notifications-tooltip"
-              mouseEnterDelay={1}
-            >
-              <Popover
-                placement="bottomRight"
-                trigger="click"
-                content={
-                  <Notifications
-                    notifications={notifications}
-                    onNotificationClick={this.handleCloseNotificationsPopover}
-                    currentAuthUsername={username}
-                    lastSeenTimestamp={lastSeenTimestamp}
-                    loadingNotifications={loadingNotifications}
-                    getUpdatedSCUserMetadata={this.props.getUpdatedSCUserMetadata}
-                  />
-                }
-                visible={notificationsPopoverVisible}
-                onVisibleChange={this.handleNotificationsPopoverVisibleChange}
-                overlayClassName="Notifications__popover-overlay"
-                title={intl.formatMessage({ id: 'notifications', defaultMessage: 'Notifications' })}
-              >
-                <a className="Topnav__link Topnav__link--light Topnav__link--action">
-                  {displayBadge ? (
-                    <div className="Topnav__notifications-count">{notificationsCountDisplay}</div>
-                  ) : (
-                    <i className="iconfont icon-remind" />
-                  )}
-                </a>
-              </Popover>
-            </BTooltip>
-          </Menu.Item>
           <Menu.Item key="user" className="Topnav__item-user">
-            <Link className="Topnav__user" to={`/@${username}`} onClick={Topnav.handleScrollToTop}>
-              <Avatar username={username} size={36} />
-            </Link>
+            <Avatar username={username} size={36} />
           </Menu.Item>
           <Menu.Item key="more" className="Topnav__menu--icon">
             <Popover
@@ -230,33 +190,6 @@ class Topnav extends React.Component {
               overlayStyle={{ position: 'fixed' }}
               content={
                 <PopoverMenu onSelect={this.handleMoreMenuSelect}>
-                  <PopoverMenuItem key="my-profile" fullScreenHidden>
-                    <FormattedMessage id="my_profile" defaultMessage="My profile" />
-                  </PopoverMenuItem>
-                  <PopoverMenuItem key="feed" fullScreenHidden>
-                    <FormattedMessage id="feed" defaultMessage="Feed" />
-                  </PopoverMenuItem>
-                  <PopoverMenuItem key="news" fullScreenHidden>
-                    <FormattedMessage id="news" defaultMessage="News" />
-                  </PopoverMenuItem>
-                  <PopoverMenuItem key="replies" fullScreenHidden>
-                    <FormattedMessage id="replies" defaultMessage="Replies" />
-                  </PopoverMenuItem>
-                  <PopoverMenuItem key="wallet" fullScreenHidden>
-                    <FormattedMessage id="wallet" defaultMessage="Wallet" />
-                  </PopoverMenuItem>
-                  <PopoverMenuItem key="activity">
-                    <FormattedMessage id="activity" defaultMessage="Activity" />
-                  </PopoverMenuItem>
-                  <PopoverMenuItem key="bookmarks">
-                    <FormattedMessage id="bookmarks" defaultMessage="Bookmarks" />
-                  </PopoverMenuItem>
-                  <PopoverMenuItem key="drafts">
-                    <FormattedMessage id="drafts" defaultMessage="Drafts" />
-                  </PopoverMenuItem>
-                  <PopoverMenuItem key="settings">
-                    <FormattedMessage id="settings" defaultMessage="Settings" />
-                  </PopoverMenuItem>
                   <PopoverMenuItem key="logout">
                     <FormattedMessage id="logout" defaultMessage="Logout" />
                   </PopoverMenuItem>
@@ -352,40 +285,10 @@ class Topnav extends React.Component {
         <div className="topnav-layout">
           <div className={classNames('left', { 'Topnav__mobile-hidden': searchBarActive })}>
             <Link className="Topnav__brand" to="/">
-              <i className="iconfont icon-busy Topnav__brand-icon" />
-              busy
+              <span className="Topnav__version"><img style={{maxWidth: '25px'}} src="https://join.utopian.io/img/logo.png"/> Utopian + DaVinci</span>
             </Link>
-            <span className="Topnav__version">beta</span>
           </div>
-          <div className={classNames('center', { mobileVisible: searchBarActive })}>
-            <div className="Topnav__input-container">
-              <AutoComplete
-                dropdownClassName="Topnav__search-dropdown-container"
-                dataSource={formattedAutoCompleteDropdown}
-                onSearch={this.handleAutoCompleteSearch}
-                onSelect={this.handleSelectOnAutoCompleteDropdown}
-                onChange={this.handleOnChangeForAutoComplete}
-                defaultActiveFirstOption={false}
-                dropdownMatchSelectWidth={false}
-                optionLabelProp="value"
-                value={searchBarValue}
-              >
-                <Input
-                  ref={ref => {
-                    this.searchInputRef = ref;
-                  }}
-                  onPressEnter={this.handleSearchForInput}
-                  placeholder={intl.formatMessage({
-                    id: 'search_placeholder',
-                    defaultMessage: 'What are you looking for?',
-                  })}
-                  autoCapitalize="off"
-                  autoCorrect="off"
-                />
-              </AutoComplete>
-              <i className="iconfont icon-search" />
-            </div>
-          </div>
+          <div className={classNames('center', { mobileVisible: searchBarActive })}></div>
           <div className="right">
             <button
               className={classNames('Topnav__mobile-search', {

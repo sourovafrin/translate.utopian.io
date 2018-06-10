@@ -112,14 +112,6 @@ export const sendComment = (parentPost, body, isUpdating = false, originalCommen
             permlink: resp.result.operations[0][1].permlink,
           };
           dispatch(getComments(id, true, focusedComment));
-
-          if (window.analytics) {
-            window.analytics.track('Comment', {
-              category: 'comment',
-              label: 'submit',
-              value: 3,
-            });
-          }
         }),
     },
     meta: {

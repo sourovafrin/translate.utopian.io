@@ -29,7 +29,6 @@ import {
 } from './app/appActions';
 import * as reblogActions from './app/Reblog/reblogActions';
 import Redirect from './components/Utils/Redirect';
-import NotificationPopup from './notifications/NotificationPopup';
 import Topnav from './components/Navigation/Topnav';
 import Transfer from './wallet/Transfer';
 import BBackTop from './components/BBackTop';
@@ -215,7 +214,6 @@ export default class Wrapper extends React.PureComponent {
               {renderRoutes(this.props.route.routes)}
               <Redirect />
               <Transfer />
-              <NotificationPopup />
               <BBackTop />
             </div>
           </Layout>
