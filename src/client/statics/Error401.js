@@ -24,7 +24,7 @@ const Error401 = ({ staticContext }) => {
       </p>
       <br/>
       <p>
-        <button style={{background: 'blue'}} className="SidebarBlock__button" onClick={() => window.location.href = SteemConnect.getLoginURL()}>Login</button>
+        <button style={{background: 'blue', width: '100%', minHeight: '50px', cursor: 'pointer', color: 'white'}} className="SidebarBlock__button" onClick={() => window.location.href = SteemConnect.getLoginURL()}>Login</button>
         By clicking on "Login" you agree to have read and accepted our <a href="https://join.utopian.io/privacy" target="_blank">Privacy Policy</a> and <a href="https://join.utopian.io/tos" target="_blank">Terms of Service</a>.
       </p>
     </div>
