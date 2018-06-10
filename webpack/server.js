@@ -17,6 +17,7 @@ module.exports = function createConfig(env = 'dev') {
       path: paths.build,
       filename: 'server.js',
     },
+
     context: process.cwd(),
     externals: fs
       .readdirSync(path.resolve(paths.app, 'node_modules'))

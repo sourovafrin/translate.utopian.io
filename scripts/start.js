@@ -31,10 +31,6 @@ async function main() {
     historyApiFallback: {
       disableDotRule: true,
     },
-    https: {
-      key: fs.readFileSync('/etc/letsencrypt/live/davinci.utopian.io/privkey.pem'),
-      cert: fs.readFileSync('/etc/letsencrypt/live/davinci.utopian.io/fullchain.pem'),
-    },
   });
 
   clientDevServer.listen(CONTENT_PORT, () => console.log('server started'));
