@@ -2,6 +2,8 @@ import http from 'http';
 import app from './app';
 var https = require('https');
 
+const fs = require('fs');
+
 var options = {
   key: fs.readFileSync('/etc/letsencrypt/live/davinci.utopian.io/privkey.pem'),
   cert: fs.readFileSync('/etc/letsencrypt/live/davinci.utopian.io/fullchain.pem'),
