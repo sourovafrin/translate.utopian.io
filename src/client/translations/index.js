@@ -40,7 +40,7 @@ export async function loadLanguage(locale) {
   addLocaleData(localeData.default);
 
   return {
-    id: language.id,
+    id: 'en-US',
     translations,
   };
 }

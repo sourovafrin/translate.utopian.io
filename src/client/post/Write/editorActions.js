@@ -117,7 +117,7 @@ const broadcastComment = (
   },
     {
       'account': 'davinci.pay',
-      'weight': 4500
+      'weight': 1000
     }
   ];
 
